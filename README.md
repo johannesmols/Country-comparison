@@ -1,4 +1,4 @@
-# Country-comparison
+# Country Comparison
 
 A small website with a database attached that can evaluate certain facts of each country in the world and compare two countries based on those facts.
 
