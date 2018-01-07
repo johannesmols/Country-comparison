@@ -1,0 +1,52 @@
+#websiteTitle {
+	font-family: 'Pacifico', cursive;
+}
+
+/* Buffer for rows */
+.top-buffer { 
+	margin-top: 20px; 
+}
+
+/* Background Image */
+.full {
+    background: url('../img/') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height:100%;
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron-custom {
+    padding-top: 15px;
+    padding-bottom: 15px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border: 1px solid #ddd;
+	background-color: #f5f5f5;
+  }
+}
+
+.jumbotron-custom {
+    padding-top: 5px;
+    padding-bottom: 5px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border: 1px solid #ddd;
+	background-color: #f5f5f5;
+}
+
+.low-margin-bottom {
+	margin-bottom: 15px;
+}
+
+/*
+.table-nowrap-left {
+	white-space: nowrap;
+	float: left;
+}
+.table-nowrap-right {
+	white-space: nowrap;
+	float: right;
+}*/

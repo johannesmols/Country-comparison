@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<!--Created by Johannes Mols-->
+<!--© Johannes Mols 2017-->
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Country Comparison</title>
+		<meta name="description" content="Compare countries by statistics">
+		<meta name="author" content="Johannes Mols">
+		
+		<!-- Layout and Appearance -->
+		<link rel="icon" type="image/x-icon" href="favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+		<link rel="stylesheet" type="text/css" href="css/flag-icon.min.css">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<!-- Include jQuery library -->
+		<script src="js/jquery.min.js"></script>
+		
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+	</head>
+	
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<!--<div class="jumbotron jumbotron-custom">-->
+						<div class="page-header text-center">
+							<h1 id="websiteTitle">Country Comparison</h1>
+						</div>
+					<!--</div>-->
+				</div>
+			</div>
+			
+			<div class="jumbotron jumbotron-custom low-margin-bottom"> <!-- Custom jumbotron class to override some padding values to make it smaller, found in css/stylesheet.css -->
+				<div class="row">
+					<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 top-buffer">
+						<!-- Dropdown List for the first country -->
+						<select id="country1" name="Country Selection 1" class="selectpicker" data-width="100%" data-style="btn-default" data-live-search="true" data-mobile="false" title="Choose...">
+							<option data-content="<span class='flag-icon flag-icon-af'></span> Afghanistan" value="AF">Afghanistan</option>
+							<option data-content="<span class='flag-icon flag-icon-al'></span> Albania" value="AL">Albania</option>
+							<option data-content="<span class='flag-icon flag-icon-dz'></span> Algeria" value="DZ">Algeria</option>
+							<option data-content="<span class='flag-icon flag-icon-as'></span> American Samoa" value="AS">American Samoa</option>
+							<option data-content="<span class='flag-icon flag-icon-ad'></span> Andorra" value="AD">Andorra</option>
+							<option data-content="<span class='flag-icon flag-icon-ao'></span> Angola" value="AO">Angola</option>
+							<option data-content="<span class='flag-icon flag-icon-ai'></span> Anguilla" value="AI">Anguilla</option>
+							<option data-content="<span class='flag-icon flag-icon-aq'></span> Antarctica" value="AQ">Antarctica</option>
+							<option data-content="<span class='flag-icon flag-icon-ag'></span> Antigua and Barbuda" value="AG">Antigua and Barbuda</option>
+							<option data-content="<span class='flag-icon flag-icon-ar'></span> Argentina" value="AR">Argentina</option>
+							<option data-content="<span class='flag-icon flag-icon-am'></span> Armenia" value="AM">Armenia</option>
+							<option data-content="<span class='flag-icon flag-icon-aw'></span> Aruba" value="AW">Aruba</option>
+							<option data-content="<span class='flag-icon flag-icon-au'></span> Australia" value="AU">Australia</option>
+							<option data-content="<span class='flag-icon flag-icon-at'></span> Austria" value="AT">Austria</option>
+							<option data-content="<span class='flag-icon flag-icon-az'></span> Azerbaijan" value="AZ">Azerbaijan</option>
+							<option data-content="<span class='flag-icon flag-icon-bs'></span> Bahamas" value="BS">Bahamas</option>
+							<option data-content="<span class='flag-icon flag-icon-bh'></span> Bahrain" value="BH">Bahrain</option>
+							<option data-content="<span class='flag-icon flag-icon-bd'></span> Bangladesh" value="BD">Bangladesh</option>
+							<option data-content="<span class='flag-icon flag-icon-bb'></span> Barbados" value="BB">Barbados</option>
+							<option data-content="<span class='flag-icon flag-icon-by'></span> Belarus" value="BY">Belarus</option>
+							<option data-content="<span class='flag-icon flag-icon-be'></span> Belgium" value="BE">Belgium</option>
+							<option data-content="<span class='flag-icon flag-icon-bz'></span> Belize" value="BZ">Belize</option>
+							<option data-content="<span class='flag-icon flag-icon-bj'></span> Benin" value="BJ">Benin</option>
+							<option data-content="<span class='flag-icon flag-icon-bm'></span> Bermuda" value="BM">Bermuda</option>
+							<option data-content="<span class='flag-icon flag-icon-bt'></span> Bhutan" value="BT">Bhutan</option>
+							<option data-content="<span class='flag-icon flag-icon-bo'></span> Bolivia" value="BO">Bolivia</option>
+							<option data-content="<span class='flag-icon flag-icon-bq'></span> Bonaire, Sint Eustatius and Saba" value="BQ">Bonaire, Sint Eustatius and Saba</option>
+							<option data-content="<span class='flag-icon flag-icon-ba'></span> Bosnia and Herzegovina" value="BA">Bosnia and Herzegovina</option>
+							<option data-content="<span class='flag-icon flag-icon-bw'></span> Botswana" value="BW">Botswana</option>
+							<option data-content="<span class='flag-icon flag-icon-bv'></span> Bouvet Island" value="BV">Bouvet Island</option>
+							<option data-content="<span class='flag-icon flag-icon-br'></span> Brazil" value="BR">Brazil</option>
+							<option data-content="<span class='flag-icon flag-icon-io'></span> British Indian Ocean Territory" value="IO">British Indian Ocean Territory</option>
+							<option data-content="<span class='flag-icon flag-icon-bn'></span> Brunei" value="BN">Brunei</option>
+							<option data-content="<span class='flag-icon flag-icon-bg'></span> Bulgaria" value="BG">Bulgaria</option>
+							<option data-content="<span class='flag-icon flag-icon-bf'></span> Burkina Faso" value="BF">Burkina Faso</option>
+							<option data-content="<span class='flag-icon flag-icon-bi'></span> Burundi" value="BI">Burundi</option>
+							<option data-content="<span class='flag-icon flag-icon-kh'></span> Cambodia" value="KH">Cambodia</option>
+							<option data-content="<span class='flag-icon flag-icon-cm'></span> Cameroon" value="CM">Cameroon</option>
+							<option data-content="<span class='flag-icon flag-icon-ca'></span> Canada" value="CA">Canada</option>
+							<option data-content="<span class='flag-icon flag-icon-cv'></span> Cape Verde" value="CV">Cape Verde</option>
+							<option data-content="<span class='flag-icon flag-icon-ky'></span> Cayman Islands" value="KY">Cayman Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-cf'></span> Central African Republic" value="CF">Central African Republic</option>
+							<option data-content="<span class='flag-icon flag-icon-td'></span> Chad" value="TD">Chad</option>
+							<option data-content="<span class='flag-icon flag-icon-cl'></span> Chile" value="CL">Chile</option>
+							<option data-content="<span class='flag-icon flag-icon-cn'></span> China" value="CN">China</option>
+							<option data-content="<span class='flag-icon flag-icon-cx'></span> Christmas Island" value="CX">Christmas Island</option>
+							<option data-content="<span class='flag-icon flag-icon-cc'></span> Cocos (Keeling) Islands" value="CC">Cocos (Keeling) Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-co'></span> Colombia" value="CO">Colombia</option>
+							<option data-content="<span class='flag-icon flag-icon-km'></span> Comoros" value="KM">Comoros</option>
+							<option data-content="<span class='flag-icon flag-icon-cg'></span> Republic of Congo" value="CG">Republic of Congo</option>
+							<option data-content="<span class='flag-icon flag-icon-cd'></span> Democratic Republic of Congo" value="CD">Democratic Republic of Congo</option>
+							<option data-content="<span class='flag-icon flag-icon-ck'></span> Cook Islands" value="CK">Cook Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-cr'></span> Costa Rica" value="CR">Costa Rica</option>
+							<option data-content="<span class='flag-icon flag-icon-ci'></span> Côte d'Ivoire" value="CI">Côte d'Ivoire</option>
+							<option data-content="<span class='flag-icon flag-icon-hr'></span> Croatia" value="HR">Croatia</option>
+							<option data-content="<span class='flag-icon flag-icon-cu'></span> Cuba" value="CU">Cuba</option>
+							<option data-content="<span class='flag-icon flag-icon-cw'></span> Curaçao" value="CW">Curaçao</option>
+							<option data-content="<span class='flag-icon flag-icon-cy'></span> Cyprus" value="CY">Cyprus</option>
+							<option data-content="<span class='flag-icon flag-icon-cz'></span> Czech Republic" value="CZ">Czech Republic</option>
+							<option data-content="<span class='flag-icon flag-icon-dk'></span> Denmark" value="DK">Denmark</option>
+							<option data-content="<span class='flag-icon flag-icon-dj'></span> Djibouti" value="DJ">Djibouti</option>
+							<option data-content="<span class='flag-icon flag-icon-dm'></span> Dominica" value="DM">Dominica</option>
+							<option data-content="<span class='flag-icon flag-icon-do'></span> Dominican Republic" value="DO">Dominican Republic</option>
+							<option data-content="<span class='flag-icon flag-icon-ec'></span> Ecuador" value="EC">Ecuador</option>
+							<option data-content="<span class='flag-icon flag-icon-eg'></span> Egypt" value="EG">Egypt</option>
+							<option data-content="<span class='flag-icon flag-icon-sv'></span> El Salvador" value="SV">El Salvador</option>
+							<option data-content="<span class='flag-icon flag-icon-gq'></span> Equatorial Guinea" value="GQ">Equatorial Guinea</option>
+							<option data-content="<span class='flag-icon flag-icon-er'></span> Eritrea" value="ER">Eritrea</option>
+							<option data-content="<span class='flag-icon flag-icon-ee'></span> Estonia" value="EE">Estonia</option>
+							<option data-content="<span class='flag-icon flag-icon-et'></span> Ethiopia" value="ET">Ethiopia</option>
+							<option data-content="<span class='flag-icon flag-icon-fk'></span> Falkland Islands (Malvinas)" value="FK">Falkland Islands (Malvinas)</option>
+							<option data-content="<span class='flag-icon flag-icon-fo'></span> Faroe Islands" value="FO">Faroe Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-fj'></span> Fiji" value="FJ">Fiji</option>
+							<option data-content="<span class='flag-icon flag-icon-fi'></span> Finland" value="FI">Finland</option>
+							<option data-content="<span class='flag-icon flag-icon-fr'></span> France" value="FR">France</option>
+							<option data-content="<span class='flag-icon flag-icon-gf'></span> French Guiana" value="GF">French Guiana</option>
+							<option data-content="<span class='flag-icon flag-icon-pf'></span> French Polynesia" value="PF">French Polynesia</option>
+							<option data-content="<span class='flag-icon flag-icon-tf'></span> French Southern Territories" value="TF">French Southern Territories</option>
+							<option data-content="<span class='flag-icon flag-icon-ga'></span> Gabon" value="GA">Gabon</option>
+							<option data-content="<span class='flag-icon flag-icon-gm'></span> Gambia" value="GM">Gambia</option>
+							<option data-content="<span class='flag-icon flag-icon-ge'></span> Georgia" value="GE">Georgia</option>
+							<option data-content="<span class='flag-icon flag-icon-de'></span> Germany" value="DE">Germany</option>
+							<option data-content="<span class='flag-icon flag-icon-gh'></span> Ghana" value="GH">Ghana</option>
+							<option data-content="<span class='flag-icon flag-icon-gi'></span> Gibraltar" value="GI">Gibraltar</option>
+							<option data-content="<span class='flag-icon flag-icon-gr'></span> Greece" value="GR">Greece</option>
+							<option data-content="<span class='flag-icon flag-icon-gl'></span> Greenland" value="GL">Greenland</option>
+							<option data-content="<span class='flag-icon flag-icon-gd'></span> Grenada" value="GD">Grenada</option>
+							<option data-content="<span class='flag-icon flag-icon-gp'></span> Guadeloupe" value="GP">Guadeloupe</option>
+							<option data-content="<span class='flag-icon flag-icon-gu'></span> Guam" value="GU">Guam</option>
+							<option data-content="<span class='flag-icon flag-icon-gt'></span> Guatemala" value="GT">Guatemala</option>
+							<option data-content="<span class='flag-icon flag-icon-gg'></span> Guernsey" value="GG">Guernsey</option>
+							<option data-content="<span class='flag-icon flag-icon-gn'></span> Guinea" value="GN">Guinea</option>
+							<option data-content="<span class='flag-icon flag-icon-gw'></span> Guinea-Bissau" value="GW">Guinea-Bissau</option>
+							<option data-content="<span class='flag-icon flag-icon-gy'></span> Guyana" value="GY">Guyana</option>
+							<option data-content="<span class='flag-icon flag-icon-ht'></span> Haiti" value="HT">Haiti</option>
+							<option data-content="<span class='flag-icon flag-icon-hm'></span> Heard Island and McDonald Islands" value="HM">Heard Island and McDonald Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-va'></span> Holy See (Vatican City State)" value="VA">Holy See (Vatican City State)</option>
+							<option data-content="<span class='flag-icon flag-icon-hn'></span> Honduras" value="HN">Honduras</option>
+							<option data-content="<span class='flag-icon flag-icon-hk'></span> Hong Kong" value="HK">Hong Kong</option>
+							<option data-content="<span class='flag-icon flag-icon-hu'></span> Hungary" value="HU">Hungary</option>
+							<option data-content="<span class='flag-icon flag-icon-is'></span> Iceland" value="IS">Iceland</option>
+							<option data-content="<span class='flag-icon flag-icon-in'></span> India" value="IN">India</option>
+							<option data-content="<span class='flag-icon flag-icon-id'></span> Indonesia" value="ID">Indonesia</option>
+							<option data-content="<span class='flag-icon flag-icon-ir'></span> Iran" value="IR">Iran</option>
+							<option data-content="<span class='flag-icon flag-icon-iq'></span> Iraq" value="IQ">Iraq</option>
+							<option data-content="<span class='flag-icon flag-icon-ie'></span> Ireland" value="IE">Ireland</option>
+							<option data-content="<span class='flag-icon flag-icon-im'></span> Isle of Man" value="IM">Isle of Man</option>
+							<option data-content="<span class='flag-icon flag-icon-il'></span> Israel" value="IL">Israel</option>
+							<option data-content="<span class='flag-icon flag-icon-it'></span> Italy" value="IT">Italy</option>
+							<option data-content="<span class='flag-icon flag-icon-jm'></span> Jamaica" value="JM">Jamaica</option>
+							<option data-content="<span class='flag-icon flag-icon-jp'></span> Japan" value="JP">Japan</option>
+							<option data-content="<span class='flag-icon flag-icon-je'></span> Jersey" value="JE">Jersey</option>
+							<option data-content="<span class='flag-icon flag-icon-jo'></span> Jordan" value="JO">Jordan</option>
+							<option data-content="<span class='flag-icon flag-icon-kz'></span> Kazakhstan" value="KZ">Kazakhstan</option>
+							<option data-content="<span class='flag-icon flag-icon-ke'></span> Kenya" value="KE">Kenya</option>
+							<option data-content="<span class='flag-icon flag-icon-ki'></span> Kiribati" value="KI">Kiribati</option>
+							<option data-content="<span class='flag-icon flag-icon-kp'></span> Democratic People's Republic of Korea (North Korea)" value="KP">Democratic People's Republic of Korea (North Korea)</option>
+							<option data-content="<span class='flag-icon flag-icon-kr'></span> Republic of Korea (South Korea)" value="KR">Republic of Korea (South Korea)</option>
+							<option data-content="<span class='flag-icon flag-icon-kw'></span> Kuwait" value="KW">Kuwait</option>
+							<option data-content="<span class='flag-icon flag-icon-kg'></span> Kyrgyzstan" value="KG">Kyrgyzstan</option>
+							<option data-content="<span class='flag-icon flag-icon-la'></span> Lao People's Democratic Republic" value="LA">Lao People's Democratic Republic</option>
+							<option data-content="<span class='flag-icon flag-icon-lv'></span> Latvia" value="LV">Latvia</option>
+							<option data-content="<span class='flag-icon flag-icon-lb'></span> Lebanon" value="LB">Lebanon</option>
+							<option data-content="<span class='flag-icon flag-icon-ls'></span> Lesotho" value="LS">Lesotho</option>
+							<option data-content="<span class='flag-icon flag-icon-lr'></span> Liberia" value="LR">Liberia</option>
+							<option data-content="<span class='flag-icon flag-icon-ly'></span> Libya" value="LY">Libya</option>
+							<option data-content="<span class='flag-icon flag-icon-li'></span> Liechtenstein" value="LI">Liechtenstein</option>
+							<option data-content="<span class='flag-icon flag-icon-lt'></span> Lithuania" value="LT">Lithuania</option>
+							<option data-content="<span class='flag-icon flag-icon-lu'></span> Luxembourg" value="LU">Luxembourg</option>
+							<option data-content="<span class='flag-icon flag-icon-mo'></span> Macao" value="MO">Macao</option>
+							<option data-content="<span class='flag-icon flag-icon-mk'></span> Macedonia" value="MK">Macedonia</option>
+							<option data-content="<span class='flag-icon flag-icon-mg'></span> Madagascar" value="MG">Madagascar</option>
+							<option data-content="<span class='flag-icon flag-icon-mw'></span> Malawi" value="MW">Malawi</option>
+							<option data-content="<span class='flag-icon flag-icon-my'></span> Malaysia" value="MY">Malaysia</option>
+							<option data-content="<span class='flag-icon flag-icon-mv'></span> Maldives" value="MV">Maldives</option>
+							<option data-content="<span class='flag-icon flag-icon-ml'></span> Mali" value="ML">Mali</option>
+							<option data-content="<span class='flag-icon flag-icon-mt'></span> Malta" value="MT">Malta</option>
+							<option data-content="<span class='flag-icon flag-icon-mh'></span> Marshall Islands" value="MH">Marshall Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-mq'></span> Martinique" value="MQ">Martinique</option>
+							<option data-content="<span class='flag-icon flag-icon-mr'></span> Mauritania" value="MR">Mauritania</option>
+							<option data-content="<span class='flag-icon flag-icon-mu'></span> Mauritius" value="MU">Mauritius</option>
+							<option data-content="<span class='flag-icon flag-icon-yt'></span> Mayotte" value="YT">Mayotte</option>
+							<option data-content="<span class='flag-icon flag-icon-mx'></span> Mexico" value="MX">Mexico</option>
+							<option data-content="<span class='flag-icon flag-icon-fm'></span> Federated States of Micronesia" value="FM">Federated States of Micronesia</option>
+							<option data-content="<span class='flag-icon flag-icon-md'></span> Moldova" value="MD">Moldova</option>
+							<option data-content="<span class='flag-icon flag-icon-mc'></span> Monaco" value="MC">Monaco</option>
+							<option data-content="<span class='flag-icon flag-icon-mn'></span> Mongolia" value="MN">Mongolia</option>
+							<option data-content="<span class='flag-icon flag-icon-me'></span> Montenegro" value="ME">Montenegro</option>
+							<option data-content="<span class='flag-icon flag-icon-ms'></span> Montserrat" value="MS">Montserrat</option>
+							<option data-content="<span class='flag-icon flag-icon-ma'></span> Morocco" value="MA">Morocco</option>
+							<option data-content="<span class='flag-icon flag-icon-mz'></span> Mozambique" value="MZ">Mozambique</option>
+							<option data-content="<span class='flag-icon flag-icon-mm'></span> Myanmar" value="MM">Myanmar</option>
+							<option data-content="<span class='flag-icon flag-icon-na'></span> Namibia" value="NA">Namibia</option>
+							<option data-content="<span class='flag-icon flag-icon-nr'></span> Nauru" value="NR">Nauru</option>
+							<option data-content="<span class='flag-icon flag-icon-np'></span> Nepal" value="NP">Nepal</option>
+							<option data-content="<span class='flag-icon flag-icon-nl'></span> Netherlands" value="NL">Netherlands</option>
+							<option data-content="<span class='flag-icon flag-icon-nc'></span> New Caledonia" value="NC">New Caledonia</option>
+							<option data-content="<span class='flag-icon flag-icon-nz'></span> New Zealand" value="NZ">New Zealand</option>
+							<option data-content="<span class='flag-icon flag-icon-ni'></span> Nicaragua" value="NI">Nicaragua</option>
+							<option data-content="<span class='flag-icon flag-icon-ne'></span> Niger" value="NE">Niger</option>
+							<option data-content="<span class='flag-icon flag-icon-ng'></span> Nigeria" value="NG">Nigeria</option>
+							<option data-content="<span class='flag-icon flag-icon-nu'></span> Niue" value="NU">Niue</option>
+							<option data-content="<span class='flag-icon flag-icon-nf'></span> Norfolk Island" value="NF">Norfolk Island</option>
+							<option data-content="<span class='flag-icon flag-icon-mp'></span> Northern Mariana Islands" value="MP">Northern Mariana Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-no'></span> Norway" value="NO">Norway</option>
+							<option data-content="<span class='flag-icon flag-icon-om'></span> Oman" value="OM">Oman</option>
+							<option data-content="<span class='flag-icon flag-icon-pk'></span> Pakistan" value="PK">Pakistan</option>
+							<option data-content="<span class='flag-icon flag-icon-pw'></span> Palau" value="PW">Palau</option>
+							<option data-content="<span class='flag-icon flag-icon-ps'></span> Palestinian Territory, Occupied" value="PS">Palestinian Territory, Occupied</option>
+							<option data-content="<span class='flag-icon flag-icon-pa'></span> Panama" value="PA">Panama</option>
+							<option data-content="<span class='flag-icon flag-icon-pg'></span> Papua New Guinea" value="PG">Papua New Guinea</option>
+							<option data-content="<span class='flag-icon flag-icon-py'></span> Paraguay" value="PY">Paraguay</option>
+							<option data-content="<span class='flag-icon flag-icon-pe'></span> Peru" value="PE">Peru</option>
+							<option data-content="<span class='flag-icon flag-icon-ph'></span> Philippines" value="PH">Philippines</option>
+							<option data-content="<span class='flag-icon flag-icon-pn'></span> Pitcairn" value="PN">Pitcairn</option>
+							<option data-content="<span class='flag-icon flag-icon-pl'></span> Poland" value="PL">Poland</option>
+							<option data-content="<span class='flag-icon flag-icon-pt'></span> Portugal" value="PT">Portugal</option>
+							<option data-content="<span class='flag-icon flag-icon-pr'></span> Puerto Rico" value="PR">Puerto Rico</option>
+							<option data-content="<span class='flag-icon flag-icon-qa'></span> Qatar" value="QA">Qatar</option>
+							<option data-content="<span class='flag-icon flag-icon-re'></span> Réunion" value="RE">Réunion</option>
+							<option data-content="<span class='flag-icon flag-icon-ro'></span> Romania" value="RO">Romania</option>
+							<option data-content="<span class='flag-icon flag-icon-ru'></span> Russian Federation" value="RU">Russian Federation</option>
+							<option data-content="<span class='flag-icon flag-icon-rw'></span> Rwanda" value="RW">Rwanda</option>
+							<option data-content="<span class='flag-icon flag-icon-bl'></span> Saint Barthélemy" value="BL">Saint Barthélemy</option>
+							<option data-content="<span class='flag-icon flag-icon-sh'></span> Saint Helena, Ascension and Tristan da Cunha" value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+							<option data-content="<span class='flag-icon flag-icon-kn'></span> Saint Kitts and Nevis" value="KN">Saint Kitts and Nevis</option>
+							<option data-content="<span class='flag-icon flag-icon-lc'></span> Saint Lucia" value="LC">Saint Lucia</option>
+							<option data-content="<span class='flag-icon flag-icon-mf'></span> Saint Martin (French part)" value="MF">Saint Martin (French part)</option>
+							<option data-content="<span class='flag-icon flag-icon-pm'></span> Saint Pierre and Miquelon" value="PM">Saint Pierre and Miquelon</option>
+							<option data-content="<span class='flag-icon flag-icon-vc'></span> Saint Vincent and the Grenadines" value="VC">Saint Vincent and the Grenadines</option>
+							<option data-content="<span class='flag-icon flag-icon-ws'></span> Samoa" value="WS">Samoa</option>
+							<option data-content="<span class='flag-icon flag-icon-sm'></span> San Marino" value="SM">San Marino</option>
+							<option data-content="<span class='flag-icon flag-icon-st'></span> Sao Tome and Principe" value="ST">Sao Tome and Principe</option>
+							<option data-content="<span class='flag-icon flag-icon-sa'></span> Saudi Arabia" value="SA">Saudi Arabia</option>
+							<option data-content="<span class='flag-icon flag-icon-sn'></span> Senegal" value="SN">Senegal</option>
+							<option data-content="<span class='flag-icon flag-icon-rs'></span> Serbia" value="RS">Serbia</option>
+							<option data-content="<span class='flag-icon flag-icon-sc'></span> Seychelles" value="SC">Seychelles</option>
+							<option data-content="<span class='flag-icon flag-icon-sl'></span> Sierra Leone" value="SL">Sierra Leone</option>
+							<option data-content="<span class='flag-icon flag-icon-sg'></span> Singapore" value="SG">Singapore</option>
+							<option data-content="<span class='flag-icon flag-icon-sx'></span> Sint Maarten (Dutch part)" value="SX">Sint Maarten (Dutch part)</option>
+							<option data-content="<span class='flag-icon flag-icon-sk'></span> Slovakia" value="SK">Slovakia</option>
+							<option data-content="<span class='flag-icon flag-icon-si'></span> Slovenia" value="SI">Slovenia</option>
+							<option data-content="<span class='flag-icon flag-icon-sb'></span> Solomon Islands" value="SB">Solomon Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-so'></span> Somalia" value="SO">Somalia</option>
+							<option data-content="<span class='flag-icon flag-icon-za'></span> South Africa" value="ZA">South Africa</option>
+							<option data-content="<span class='flag-icon flag-icon-gs'></span> South Georgia and the South Sandwich Islands" value="GS">South Georgia and the South Sandwich Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-ss'></span> South Sudan" value="SS">South Sudan</option>
+							<option data-content="<span class='flag-icon flag-icon-es'></span> Spain" value="ES">Spain</option>
+							<option data-content="<span class='flag-icon flag-icon-lk'></span> Sri Lanka" value="LK">Sri Lanka</option>
+							<option data-content="<span class='flag-icon flag-icon-sd'></span> Sudan" value="SD">Sudan</option>
+							<option data-content="<span class='flag-icon flag-icon-sr'></span> Suriname" value="SR">Suriname</option>
+							<option data-content="<span class='flag-icon flag-icon-sj'></span> Svalbard and Jan Mayen" value="SJ">Svalbard and Jan Mayen</option>
+							<option data-content="<span class='flag-icon flag-icon-sz'></span> Swaziland" value="SZ">Swaziland</option>
+							<option data-content="<span class='flag-icon flag-icon-se'></span> Sweden" value="SE">Sweden</option>
+							<option data-content="<span class='flag-icon flag-icon-ch'></span> Switzerland" value="CH">Switzerland</option>
+							<option data-content="<span class='flag-icon flag-icon-sy'></span> Syrian Arab Republic" value="SY">Syrian Arab Republic</option>
+							<option data-content="<span class='flag-icon flag-icon-tw'></span> Taiwan, Province of China" value="TW">Taiwan, Province of China</option>
+							<option data-content="<span class='flag-icon flag-icon-tj'></span> Tajikistan" value="TJ">Tajikistan</option>
+							<option data-content="<span class='flag-icon flag-icon-tz'></span> Tanzania" value="TZ">Tanzania</option>
+							<option data-content="<span class='flag-icon flag-icon-th'></span> Thailand" value="TH">Thailand</option>
+							<option data-content="<span class='flag-icon flag-icon-tl'></span> Timor-Leste" value="TL">Timor-Leste</option>
+							<option data-content="<span class='flag-icon flag-icon-tg'></span> Togo" value="TG">Togo</option>
+							<option data-content="<span class='flag-icon flag-icon-tk'></span> Tokelau" value="TK">Tokelau</option>
+							<option data-content="<span class='flag-icon flag-icon-to'></span> Tonga" value="TO">Tonga</option>
+							<option data-content="<span class='flag-icon flag-icon-tt'></span> Trinidad and Tobago" value="TT">Trinidad and Tobago</option>
+							<option data-content="<span class='flag-icon flag-icon-tn'></span> Tunisia" value="TN">Tunisia</option>
+							<option data-content="<span class='flag-icon flag-icon-tr'></span> Turkey" value="TR">Turkey</option>
+							<option data-content="<span class='flag-icon flag-icon-tm'></span> Turkmenistan" value="TM">Turkmenistan</option>
+							<option data-content="<span class='flag-icon flag-icon-tc'></span> Turks and Caicos Islands" value="TC">Turks and Caicos Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-tv'></span> Tuvalu" value="TV">Tuvalu</option>
+							<option data-content="<span class='flag-icon flag-icon-ug'></span> Uganda" value="UG">Uganda</option>
+							<option data-content="<span class='flag-icon flag-icon-ua'></span> Ukraine" value="UA">Ukraine</option>
+							<option data-content="<span class='flag-icon flag-icon-ae'></span> United Arab Emirates" value="AE">United Arab Emirates</option>
+							<option data-content="<span class='flag-icon flag-icon-gb'></span> United Kingdom" value="GB">United Kingdom</option>
+							<option data-content="<span class='flag-icon flag-icon-us'></span> United States" value="US">United States</option>
+							<option data-content="<span class='flag-icon flag-icon-um'></span> United States Minor Outlying Islands" value="UM">United States Minor Outlying Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-uy'></span> Uruguay" value="UY">Uruguay</option>
+							<option data-content="<span class='flag-icon flag-icon-uz'></span> Uzbekistan" value="UZ">Uzbekistan</option>
+							<option data-content="<span class='flag-icon flag-icon-vu'></span> Vanuatu" value="VU">Vanuatu</option>
+							<option data-content="<span class='flag-icon flag-icon-ve'></span> Venezuela" value="VE">Venezuela</option>
+							<option data-content="<span class='flag-icon flag-icon-vn'></span> Vietnam" value="VN">Vietnam</option>
+							<option data-content="<span class='flag-icon flag-icon-vg'></span> Virgin Islands, British" value="VG">Virgin Islands, British</option>
+							<option data-content="<span class='flag-icon flag-icon-vi'></span> Virgin Islands, U.S." value="VI">Virgin Islands, U.S.</option>
+							<option data-content="<span class='flag-icon flag-icon-wf'></span> Wallis and Futuna" value="WF">Wallis and Futuna</option>
+							<option data-content="<span class='flag-icon flag-icon-eh'></span> Western Sahara" value="EH">Western Sahara</option>
+							<option data-content="<span class='flag-icon flag-icon-ye'></span> Yemen" value="YE">Yemen</option>
+							<option data-content="<span class='flag-icon flag-icon-zm'></span> Zambia" value="ZM">Zambia</option>
+							<option data-content="<span class='flag-icon flag-icon-zw'></span> Zimbabwe" value="ZW">Zimbabwe</option>
+						</select>
+					</div>
+						
+					<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 top-buffer">
+						<!-- Compare Button -->
+						<button id="btnSubmit" type="Submit" class="btn btn-success btn-block">Compare</button>
+					</div>
+					
+					<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 top-buffer">
+						<!-- Dropdown List for the second country -->
+						<select id="country2" name="Country Selection 2" class="selectpicker" data-width="100%" data-style="btn-default" data-live-search="true" data-mobile="false" title="Choose...">
+							<option data-content="<span class='flag-icon flag-icon-af'></span> Afghanistan" value="AF">Afghanistan</option>
+							<option data-content="<span class='flag-icon flag-icon-al'></span> Albania" value="AL">Albania</option>
+							<option data-content="<span class='flag-icon flag-icon-dz'></span> Algeria" value="DZ">Algeria</option>
+							<option data-content="<span class='flag-icon flag-icon-as'></span> American Samoa" value="AS">American Samoa</option>
+							<option data-content="<span class='flag-icon flag-icon-ad'></span> Andorra" value="AD">Andorra</option>
+							<option data-content="<span class='flag-icon flag-icon-ao'></span> Angola" value="AO">Angola</option>
+							<option data-content="<span class='flag-icon flag-icon-ai'></span> Anguilla" value="AI">Anguilla</option>
+							<option data-content="<span class='flag-icon flag-icon-aq'></span> Antarctica" value="AQ">Antarctica</option>
+							<option data-content="<span class='flag-icon flag-icon-ag'></span> Antigua and Barbuda" value="AG">Antigua and Barbuda</option>
+							<option data-content="<span class='flag-icon flag-icon-ar'></span> Argentina" value="AR">Argentina</option>
+							<option data-content="<span class='flag-icon flag-icon-am'></span> Armenia" value="AM">Armenia</option>
+							<option data-content="<span class='flag-icon flag-icon-aw'></span> Aruba" value="AW">Aruba</option>
+							<option data-content="<span class='flag-icon flag-icon-au'></span> Australia" value="AU">Australia</option>
+							<option data-content="<span class='flag-icon flag-icon-at'></span> Austria" value="AT">Austria</option>
+							<option data-content="<span class='flag-icon flag-icon-az'></span> Azerbaijan" value="AZ">Azerbaijan</option>
+							<option data-content="<span class='flag-icon flag-icon-bs'></span> Bahamas" value="BS">Bahamas</option>
+							<option data-content="<span class='flag-icon flag-icon-bh'></span> Bahrain" value="BH">Bahrain</option>
+							<option data-content="<span class='flag-icon flag-icon-bd'></span> Bangladesh" value="BD">Bangladesh</option>
+							<option data-content="<span class='flag-icon flag-icon-bb'></span> Barbados" value="BB">Barbados</option>
+							<option data-content="<span class='flag-icon flag-icon-by'></span> Belarus" value="BY">Belarus</option>
+							<option data-content="<span class='flag-icon flag-icon-be'></span> Belgium" value="BE">Belgium</option>
+							<option data-content="<span class='flag-icon flag-icon-bz'></span> Belize" value="BZ">Belize</option>
+							<option data-content="<span class='flag-icon flag-icon-bj'></span> Benin" value="BJ">Benin</option>
+							<option data-content="<span class='flag-icon flag-icon-bm'></span> Bermuda" value="BM">Bermuda</option>
+							<option data-content="<span class='flag-icon flag-icon-bt'></span> Bhutan" value="BT">Bhutan</option>
+							<option data-content="<span class='flag-icon flag-icon-bo'></span> Bolivia" value="BO">Bolivia</option>
+							<option data-content="<span class='flag-icon flag-icon-bq'></span> Bonaire, Sint Eustatius and Saba" value="BQ">Bonaire, Sint Eustatius and Saba</option>
+							<option data-content="<span class='flag-icon flag-icon-ba'></span> Bosnia and Herzegovina" value="BA">Bosnia and Herzegovina</option>
+							<option data-content="<span class='flag-icon flag-icon-bw'></span> Botswana" value="BW">Botswana</option>
+							<option data-content="<span class='flag-icon flag-icon-bv'></span> Bouvet Island" value="BV">Bouvet Island</option>
+							<option data-content="<span class='flag-icon flag-icon-br'></span> Brazil" value="BR">Brazil</option>
+							<option data-content="<span class='flag-icon flag-icon-io'></span> British Indian Ocean Territory" value="IO">British Indian Ocean Territory</option>
+							<option data-content="<span class='flag-icon flag-icon-bn'></span> Brunei" value="BN">Brunei</option>
+							<option data-content="<span class='flag-icon flag-icon-bg'></span> Bulgaria" value="BG">Bulgaria</option>
+							<option data-content="<span class='flag-icon flag-icon-bf'></span> Burkina Faso" value="BF">Burkina Faso</option>
+							<option data-content="<span class='flag-icon flag-icon-bi'></span> Burundi" value="BI">Burundi</option>
+							<option data-content="<span class='flag-icon flag-icon-kh'></span> Cambodia" value="KH">Cambodia</option>
+							<option data-content="<span class='flag-icon flag-icon-cm'></span> Cameroon" value="CM">Cameroon</option>
+							<option data-content="<span class='flag-icon flag-icon-ca'></span> Canada" value="CA">Canada</option>
+							<option data-content="<span class='flag-icon flag-icon-cv'></span> Cape Verde" value="CV">Cape Verde</option>
+							<option data-content="<span class='flag-icon flag-icon-ky'></span> Cayman Islands" value="KY">Cayman Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-cf'></span> Central African Republic" value="CF">Central African Republic</option>
+							<option data-content="<span class='flag-icon flag-icon-td'></span> Chad" value="TD">Chad</option>
+							<option data-content="<span class='flag-icon flag-icon-cl'></span> Chile" value="CL">Chile</option>
+							<option data-content="<span class='flag-icon flag-icon-cn'></span> China" value="CN">China</option>
+							<option data-content="<span class='flag-icon flag-icon-cx'></span> Christmas Island" value="CX">Christmas Island</option>
+							<option data-content="<span class='flag-icon flag-icon-cc'></span> Cocos (Keeling) Islands" value="CC">Cocos (Keeling) Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-co'></span> Colombia" value="CO">Colombia</option>
+							<option data-content="<span class='flag-icon flag-icon-km'></span> Comoros" value="KM">Comoros</option>
+							<option data-content="<span class='flag-icon flag-icon-cg'></span> Republic of Congo" value="CG">Republic of Congo</option>
+							<option data-content="<span class='flag-icon flag-icon-cd'></span> Democratic Republic of Congo" value="CD">Democratic Republic of Congo</option>
+							<option data-content="<span class='flag-icon flag-icon-ck'></span> Cook Islands" value="CK">Cook Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-cr'></span> Costa Rica" value="CR">Costa Rica</option>
+							<option data-content="<span class='flag-icon flag-icon-ci'></span> Côte d'Ivoire" value="CI">Côte d'Ivoire</option>
+							<option data-content="<span class='flag-icon flag-icon-hr'></span> Croatia" value="HR">Croatia</option>
+							<option data-content="<span class='flag-icon flag-icon-cu'></span> Cuba" value="CU">Cuba</option>
+							<option data-content="<span class='flag-icon flag-icon-cw'></span> Curaçao" value="CW">Curaçao</option>
+							<option data-content="<span class='flag-icon flag-icon-cy'></span> Cyprus" value="CY">Cyprus</option>
+							<option data-content="<span class='flag-icon flag-icon-cz'></span> Czech Republic" value="CZ">Czech Republic</option>
+							<option data-content="<span class='flag-icon flag-icon-dk'></span> Denmark" value="DK">Denmark</option>
+							<option data-content="<span class='flag-icon flag-icon-dj'></span> Djibouti" value="DJ">Djibouti</option>
+							<option data-content="<span class='flag-icon flag-icon-dm'></span> Dominica" value="DM">Dominica</option>
+							<option data-content="<span class='flag-icon flag-icon-do'></span> Dominican Republic" value="DO">Dominican Republic</option>
+							<option data-content="<span class='flag-icon flag-icon-ec'></span> Ecuador" value="EC">Ecuador</option>
+							<option data-content="<span class='flag-icon flag-icon-eg'></span> Egypt" value="EG">Egypt</option>
+							<option data-content="<span class='flag-icon flag-icon-sv'></span> El Salvador" value="SV">El Salvador</option>
+							<option data-content="<span class='flag-icon flag-icon-gq'></span> Equatorial Guinea" value="GQ">Equatorial Guinea</option>
+							<option data-content="<span class='flag-icon flag-icon-er'></span> Eritrea" value="ER">Eritrea</option>
+							<option data-content="<span class='flag-icon flag-icon-ee'></span> Estonia" value="EE">Estonia</option>
+							<option data-content="<span class='flag-icon flag-icon-et'></span> Ethiopia" value="ET">Ethiopia</option>
+							<option data-content="<span class='flag-icon flag-icon-fk'></span> Falkland Islands (Malvinas)" value="FK">Falkland Islands (Malvinas)</option>
+							<option data-content="<span class='flag-icon flag-icon-fo'></span> Faroe Islands" value="FO">Faroe Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-fj'></span> Fiji" value="FJ">Fiji</option>
+							<option data-content="<span class='flag-icon flag-icon-fi'></span> Finland" value="FI">Finland</option>
+							<option data-content="<span class='flag-icon flag-icon-fr'></span> France" value="FR">France</option>
+							<option data-content="<span class='flag-icon flag-icon-gf'></span> French Guiana" value="GF">French Guiana</option>
+							<option data-content="<span class='flag-icon flag-icon-pf'></span> French Polynesia" value="PF">French Polynesia</option>
+							<option data-content="<span class='flag-icon flag-icon-tf'></span> French Southern Territories" value="TF">French Southern Territories</option>
+							<option data-content="<span class='flag-icon flag-icon-ga'></span> Gabon" value="GA">Gabon</option>
+							<option data-content="<span class='flag-icon flag-icon-gm'></span> Gambia" value="GM">Gambia</option>
+							<option data-content="<span class='flag-icon flag-icon-ge'></span> Georgia" value="GE">Georgia</option>
+							<option data-content="<span class='flag-icon flag-icon-de'></span> Germany" value="DE">Germany</option>
+							<option data-content="<span class='flag-icon flag-icon-gh'></span> Ghana" value="GH">Ghana</option>
+							<option data-content="<span class='flag-icon flag-icon-gi'></span> Gibraltar" value="GI">Gibraltar</option>
+							<option data-content="<span class='flag-icon flag-icon-gr'></span> Greece" value="GR">Greece</option>
+							<option data-content="<span class='flag-icon flag-icon-gl'></span> Greenland" value="GL">Greenland</option>
+							<option data-content="<span class='flag-icon flag-icon-gd'></span> Grenada" value="GD">Grenada</option>
+							<option data-content="<span class='flag-icon flag-icon-gp'></span> Guadeloupe" value="GP">Guadeloupe</option>
+							<option data-content="<span class='flag-icon flag-icon-gu'></span> Guam" value="GU">Guam</option>
+							<option data-content="<span class='flag-icon flag-icon-gt'></span> Guatemala" value="GT">Guatemala</option>
+							<option data-content="<span class='flag-icon flag-icon-gg'></span> Guernsey" value="GG">Guernsey</option>
+							<option data-content="<span class='flag-icon flag-icon-gn'></span> Guinea" value="GN">Guinea</option>
+							<option data-content="<span class='flag-icon flag-icon-gw'></span> Guinea-Bissau" value="GW">Guinea-Bissau</option>
+							<option data-content="<span class='flag-icon flag-icon-gy'></span> Guyana" value="GY">Guyana</option>
+							<option data-content="<span class='flag-icon flag-icon-ht'></span> Haiti" value="HT">Haiti</option>
+							<option data-content="<span class='flag-icon flag-icon-hm'></span> Heard Island and McDonald Islands" value="HM">Heard Island and McDonald Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-va'></span> Holy See (Vatican City State)" value="VA">Holy See (Vatican City State)</option>
+							<option data-content="<span class='flag-icon flag-icon-hn'></span> Honduras" value="HN">Honduras</option>
+							<option data-content="<span class='flag-icon flag-icon-hk'></span> Hong Kong" value="HK">Hong Kong</option>
+							<option data-content="<span class='flag-icon flag-icon-hu'></span> Hungary" value="HU">Hungary</option>
+							<option data-content="<span class='flag-icon flag-icon-is'></span> Iceland" value="IS">Iceland</option>
+							<option data-content="<span class='flag-icon flag-icon-in'></span> India" value="IN">India</option>
+							<option data-content="<span class='flag-icon flag-icon-id'></span> Indonesia" value="ID">Indonesia</option>
+							<option data-content="<span class='flag-icon flag-icon-ir'></span> Iran" value="IR">Iran</option>
+							<option data-content="<span class='flag-icon flag-icon-iq'></span> Iraq" value="IQ">Iraq</option>
+							<option data-content="<span class='flag-icon flag-icon-ie'></span> Ireland" value="IE">Ireland</option>
+							<option data-content="<span class='flag-icon flag-icon-im'></span> Isle of Man" value="IM">Isle of Man</option>
+							<option data-content="<span class='flag-icon flag-icon-il'></span> Israel" value="IL">Israel</option>
+							<option data-content="<span class='flag-icon flag-icon-it'></span> Italy" value="IT">Italy</option>
+							<option data-content="<span class='flag-icon flag-icon-jm'></span> Jamaica" value="JM">Jamaica</option>
+							<option data-content="<span class='flag-icon flag-icon-jp'></span> Japan" value="JP">Japan</option>
+							<option data-content="<span class='flag-icon flag-icon-je'></span> Jersey" value="JE">Jersey</option>
+							<option data-content="<span class='flag-icon flag-icon-jo'></span> Jordan" value="JO">Jordan</option>
+							<option data-content="<span class='flag-icon flag-icon-kz'></span> Kazakhstan" value="KZ">Kazakhstan</option>
+							<option data-content="<span class='flag-icon flag-icon-ke'></span> Kenya" value="KE">Kenya</option>
+							<option data-content="<span class='flag-icon flag-icon-ki'></span> Kiribati" value="KI">Kiribati</option>
+							<option data-content="<span class='flag-icon flag-icon-kp'></span> Democratic People's Republic of Korea (North Korea)" value="KP">Democratic People's Republic of Korea (North Korea)</option>
+							<option data-content="<span class='flag-icon flag-icon-kr'></span> Republic of Korea (South Korea)" value="KR">Republic of Korea (South Korea)</option>
+							<option data-content="<span class='flag-icon flag-icon-kw'></span> Kuwait" value="KW">Kuwait</option>
+							<option data-content="<span class='flag-icon flag-icon-kg'></span> Kyrgyzstan" value="KG">Kyrgyzstan</option>
+							<option data-content="<span class='flag-icon flag-icon-la'></span> Lao People's Democratic Republic" value="LA">Lao People's Democratic Republic</option>
+							<option data-content="<span class='flag-icon flag-icon-lv'></span> Latvia" value="LV">Latvia</option>
+							<option data-content="<span class='flag-icon flag-icon-lb'></span> Lebanon" value="LB">Lebanon</option>
+							<option data-content="<span class='flag-icon flag-icon-ls'></span> Lesotho" value="LS">Lesotho</option>
+							<option data-content="<span class='flag-icon flag-icon-lr'></span> Liberia" value="LR">Liberia</option>
+							<option data-content="<span class='flag-icon flag-icon-ly'></span> Libya" value="LY">Libya</option>
+							<option data-content="<span class='flag-icon flag-icon-li'></span> Liechtenstein" value="LI">Liechtenstein</option>
+							<option data-content="<span class='flag-icon flag-icon-lt'></span> Lithuania" value="LT">Lithuania</option>
+							<option data-content="<span class='flag-icon flag-icon-lu'></span> Luxembourg" value="LU">Luxembourg</option>
+							<option data-content="<span class='flag-icon flag-icon-mo'></span> Macao" value="MO">Macao</option>
+							<option data-content="<span class='flag-icon flag-icon-mk'></span> Macedonia" value="MK">Macedonia</option>
+							<option data-content="<span class='flag-icon flag-icon-mg'></span> Madagascar" value="MG">Madagascar</option>
+							<option data-content="<span class='flag-icon flag-icon-mw'></span> Malawi" value="MW">Malawi</option>
+							<option data-content="<span class='flag-icon flag-icon-my'></span> Malaysia" value="MY">Malaysia</option>
+							<option data-content="<span class='flag-icon flag-icon-mv'></span> Maldives" value="MV">Maldives</option>
+							<option data-content="<span class='flag-icon flag-icon-ml'></span> Mali" value="ML">Mali</option>
+							<option data-content="<span class='flag-icon flag-icon-mt'></span> Malta" value="MT">Malta</option>
+							<option data-content="<span class='flag-icon flag-icon-mh'></span> Marshall Islands" value="MH">Marshall Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-mq'></span> Martinique" value="MQ">Martinique</option>
+							<option data-content="<span class='flag-icon flag-icon-mr'></span> Mauritania" value="MR">Mauritania</option>
+							<option data-content="<span class='flag-icon flag-icon-mu'></span> Mauritius" value="MU">Mauritius</option>
+							<option data-content="<span class='flag-icon flag-icon-yt'></span> Mayotte" value="YT">Mayotte</option>
+							<option data-content="<span class='flag-icon flag-icon-mx'></span> Mexico" value="MX">Mexico</option>
+							<option data-content="<span class='flag-icon flag-icon-fm'></span> Federated States of Micronesia" value="FM">Federated States of Micronesia</option>
+							<option data-content="<span class='flag-icon flag-icon-md'></span> Moldova" value="MD">Moldova</option>
+							<option data-content="<span class='flag-icon flag-icon-mc'></span> Monaco" value="MC">Monaco</option>
+							<option data-content="<span class='flag-icon flag-icon-mn'></span> Mongolia" value="MN">Mongolia</option>
+							<option data-content="<span class='flag-icon flag-icon-me'></span> Montenegro" value="ME">Montenegro</option>
+							<option data-content="<span class='flag-icon flag-icon-ms'></span> Montserrat" value="MS">Montserrat</option>
+							<option data-content="<span class='flag-icon flag-icon-ma'></span> Morocco" value="MA">Morocco</option>
+							<option data-content="<span class='flag-icon flag-icon-mz'></span> Mozambique" value="MZ">Mozambique</option>
+							<option data-content="<span class='flag-icon flag-icon-mm'></span> Myanmar" value="MM">Myanmar</option>
+							<option data-content="<span class='flag-icon flag-icon-na'></span> Namibia" value="NA">Namibia</option>
+							<option data-content="<span class='flag-icon flag-icon-nr'></span> Nauru" value="NR">Nauru</option>
+							<option data-content="<span class='flag-icon flag-icon-np'></span> Nepal" value="NP">Nepal</option>
+							<option data-content="<span class='flag-icon flag-icon-nl'></span> Netherlands" value="NL">Netherlands</option>
+							<option data-content="<span class='flag-icon flag-icon-nc'></span> New Caledonia" value="NC">New Caledonia</option>
+							<option data-content="<span class='flag-icon flag-icon-nz'></span> New Zealand" value="NZ">New Zealand</option>
+							<option data-content="<span class='flag-icon flag-icon-ni'></span> Nicaragua" value="NI">Nicaragua</option>
+							<option data-content="<span class='flag-icon flag-icon-ne'></span> Niger" value="NE">Niger</option>
+							<option data-content="<span class='flag-icon flag-icon-ng'></span> Nigeria" value="NG">Nigeria</option>
+							<option data-content="<span class='flag-icon flag-icon-nu'></span> Niue" value="NU">Niue</option>
+							<option data-content="<span class='flag-icon flag-icon-nf'></span> Norfolk Island" value="NF">Norfolk Island</option>
+							<option data-content="<span class='flag-icon flag-icon-mp'></span> Northern Mariana Islands" value="MP">Northern Mariana Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-no'></span> Norway" value="NO">Norway</option>
+							<option data-content="<span class='flag-icon flag-icon-om'></span> Oman" value="OM">Oman</option>
+							<option data-content="<span class='flag-icon flag-icon-pk'></span> Pakistan" value="PK">Pakistan</option>
+							<option data-content="<span class='flag-icon flag-icon-pw'></span> Palau" value="PW">Palau</option>
+							<option data-content="<span class='flag-icon flag-icon-ps'></span> Palestinian Territory, Occupied" value="PS">Palestinian Territory, Occupied</option>
+							<option data-content="<span class='flag-icon flag-icon-pa'></span> Panama" value="PA">Panama</option>
+							<option data-content="<span class='flag-icon flag-icon-pg'></span> Papua New Guinea" value="PG">Papua New Guinea</option>
+							<option data-content="<span class='flag-icon flag-icon-py'></span> Paraguay" value="PY">Paraguay</option>
+							<option data-content="<span class='flag-icon flag-icon-pe'></span> Peru" value="PE">Peru</option>
+							<option data-content="<span class='flag-icon flag-icon-ph'></span> Philippines" value="PH">Philippines</option>
+							<option data-content="<span class='flag-icon flag-icon-pn'></span> Pitcairn" value="PN">Pitcairn</option>
+							<option data-content="<span class='flag-icon flag-icon-pl'></span> Poland" value="PL">Poland</option>
+							<option data-content="<span class='flag-icon flag-icon-pt'></span> Portugal" value="PT">Portugal</option>
+							<option data-content="<span class='flag-icon flag-icon-pr'></span> Puerto Rico" value="PR">Puerto Rico</option>
+							<option data-content="<span class='flag-icon flag-icon-qa'></span> Qatar" value="QA">Qatar</option>
+							<option data-content="<span class='flag-icon flag-icon-re'></span> Réunion" value="RE">Réunion</option>
+							<option data-content="<span class='flag-icon flag-icon-ro'></span> Romania" value="RO">Romania</option>
+							<option data-content="<span class='flag-icon flag-icon-ru'></span> Russian Federation" value="RU">Russian Federation</option>
+							<option data-content="<span class='flag-icon flag-icon-rw'></span> Rwanda" value="RW">Rwanda</option>
+							<option data-content="<span class='flag-icon flag-icon-bl'></span> Saint Barthélemy" value="BL">Saint Barthélemy</option>
+							<option data-content="<span class='flag-icon flag-icon-sh'></span> Saint Helena, Ascension and Tristan da Cunha" value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+							<option data-content="<span class='flag-icon flag-icon-kn'></span> Saint Kitts and Nevis" value="KN">Saint Kitts and Nevis</option>
+							<option data-content="<span class='flag-icon flag-icon-lc'></span> Saint Lucia" value="LC">Saint Lucia</option>
+							<option data-content="<span class='flag-icon flag-icon-mf'></span> Saint Martin (French part)" value="MF">Saint Martin (French part)</option>
+							<option data-content="<span class='flag-icon flag-icon-pm'></span> Saint Pierre and Miquelon" value="PM">Saint Pierre and Miquelon</option>
+							<option data-content="<span class='flag-icon flag-icon-vc'></span> Saint Vincent and the Grenadines" value="VC">Saint Vincent and the Grenadines</option>
+							<option data-content="<span class='flag-icon flag-icon-ws'></span> Samoa" value="WS">Samoa</option>
+							<option data-content="<span class='flag-icon flag-icon-sm'></span> San Marino" value="SM">San Marino</option>
+							<option data-content="<span class='flag-icon flag-icon-st'></span> Sao Tome and Principe" value="ST">Sao Tome and Principe</option>
+							<option data-content="<span class='flag-icon flag-icon-sa'></span> Saudi Arabia" value="SA">Saudi Arabia</option>
+							<option data-content="<span class='flag-icon flag-icon-sn'></span> Senegal" value="SN">Senegal</option>
+							<option data-content="<span class='flag-icon flag-icon-rs'></span> Serbia" value="RS">Serbia</option>
+							<option data-content="<span class='flag-icon flag-icon-sc'></span> Seychelles" value="SC">Seychelles</option>
+							<option data-content="<span class='flag-icon flag-icon-sl'></span> Sierra Leone" value="SL">Sierra Leone</option>
+							<option data-content="<span class='flag-icon flag-icon-sg'></span> Singapore" value="SG">Singapore</option>
+							<option data-content="<span class='flag-icon flag-icon-sx'></span> Sint Maarten (Dutch part)" value="SX">Sint Maarten (Dutch part)</option>
+							<option data-content="<span class='flag-icon flag-icon-sk'></span> Slovakia" value="SK">Slovakia</option>
+							<option data-content="<span class='flag-icon flag-icon-si'></span> Slovenia" value="SI">Slovenia</option>
+							<option data-content="<span class='flag-icon flag-icon-sb'></span> Solomon Islands" value="SB">Solomon Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-so'></span> Somalia" value="SO">Somalia</option>
+							<option data-content="<span class='flag-icon flag-icon-za'></span> South Africa" value="ZA">South Africa</option>
+							<option data-content="<span class='flag-icon flag-icon-gs'></span> South Georgia and the South Sandwich Islands" value="GS">South Georgia and the South Sandwich Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-ss'></span> South Sudan" value="SS">South Sudan</option>
+							<option data-content="<span class='flag-icon flag-icon-es'></span> Spain" value="ES">Spain</option>
+							<option data-content="<span class='flag-icon flag-icon-lk'></span> Sri Lanka" value="LK">Sri Lanka</option>
+							<option data-content="<span class='flag-icon flag-icon-sd'></span> Sudan" value="SD">Sudan</option>
+							<option data-content="<span class='flag-icon flag-icon-sr'></span> Suriname" value="SR">Suriname</option>
+							<option data-content="<span class='flag-icon flag-icon-sj'></span> Svalbard and Jan Mayen" value="SJ">Svalbard and Jan Mayen</option>
+							<option data-content="<span class='flag-icon flag-icon-sz'></span> Swaziland" value="SZ">Swaziland</option>
+							<option data-content="<span class='flag-icon flag-icon-se'></span> Sweden" value="SE">Sweden</option>
+							<option data-content="<span class='flag-icon flag-icon-ch'></span> Switzerland" value="CH">Switzerland</option>
+							<option data-content="<span class='flag-icon flag-icon-sy'></span> Syrian Arab Republic" value="SY">Syrian Arab Republic</option>
+							<option data-content="<span class='flag-icon flag-icon-tw'></span> Taiwan, Province of China" value="TW">Taiwan, Province of China</option>
+							<option data-content="<span class='flag-icon flag-icon-tj'></span> Tajikistan" value="TJ">Tajikistan</option>
+							<option data-content="<span class='flag-icon flag-icon-tz'></span> Tanzania" value="TZ">Tanzania</option>
+							<option data-content="<span class='flag-icon flag-icon-th'></span> Thailand" value="TH">Thailand</option>
+							<option data-content="<span class='flag-icon flag-icon-tl'></span> Timor-Leste" value="TL">Timor-Leste</option>
+							<option data-content="<span class='flag-icon flag-icon-tg'></span> Togo" value="TG">Togo</option>
+							<option data-content="<span class='flag-icon flag-icon-tk'></span> Tokelau" value="TK">Tokelau</option>
+							<option data-content="<span class='flag-icon flag-icon-to'></span> Tonga" value="TO">Tonga</option>
+							<option data-content="<span class='flag-icon flag-icon-tt'></span> Trinidad and Tobago" value="TT">Trinidad and Tobago</option>
+							<option data-content="<span class='flag-icon flag-icon-tn'></span> Tunisia" value="TN">Tunisia</option>
+							<option data-content="<span class='flag-icon flag-icon-tr'></span> Turkey" value="TR">Turkey</option>
+							<option data-content="<span class='flag-icon flag-icon-tm'></span> Turkmenistan" value="TM">Turkmenistan</option>
+							<option data-content="<span class='flag-icon flag-icon-tc'></span> Turks and Caicos Islands" value="TC">Turks and Caicos Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-tv'></span> Tuvalu" value="TV">Tuvalu</option>
+							<option data-content="<span class='flag-icon flag-icon-ug'></span> Uganda" value="UG">Uganda</option>
+							<option data-content="<span class='flag-icon flag-icon-ua'></span> Ukraine" value="UA">Ukraine</option>
+							<option data-content="<span class='flag-icon flag-icon-ae'></span> United Arab Emirates" value="AE">United Arab Emirates</option>
+							<option data-content="<span class='flag-icon flag-icon-gb'></span> United Kingdom" value="GB">United Kingdom</option>
+							<option data-content="<span class='flag-icon flag-icon-us'></span> United States" value="US">United States</option>
+							<option data-content="<span class='flag-icon flag-icon-um'></span> United States Minor Outlying Islands" value="UM">United States Minor Outlying Islands</option>
+							<option data-content="<span class='flag-icon flag-icon-uy'></span> Uruguay" value="UY">Uruguay</option>
+							<option data-content="<span class='flag-icon flag-icon-uz'></span> Uzbekistan" value="UZ">Uzbekistan</option>
+							<option data-content="<span class='flag-icon flag-icon-vu'></span> Vanuatu" value="VU">Vanuatu</option>
+							<option data-content="<span class='flag-icon flag-icon-ve'></span> Venezuela" value="VE">Venezuela</option>
+							<option data-content="<span class='flag-icon flag-icon-vn'></span> Vietnam" value="VN">Vietnam</option>
+							<option data-content="<span class='flag-icon flag-icon-vg'></span> Virgin Islands, British" value="VG">Virgin Islands, British</option>
+							<option data-content="<span class='flag-icon flag-icon-vi'></span> Virgin Islands, U.S." value="VI">Virgin Islands, U.S.</option>
+							<option data-content="<span class='flag-icon flag-icon-wf'></span> Wallis and Futuna" value="WF">Wallis and Futuna</option>
+							<option data-content="<span class='flag-icon flag-icon-eh'></span> Western Sahara" value="EH">Western Sahara</option>
+							<option data-content="<span class='flag-icon flag-icon-ye'></span> Yemen" value="YE">Yemen</option>
+							<option data-content="<span class='flag-icon flag-icon-zm'></span> Zambia" value="ZM">Zambia</option>
+							<option data-content="<span class='flag-icon flag-icon-zw'></span> Zimbabwe" value="ZW">Zimbabwe</option>
+						</select>
+					</div>
+					
+					<!-- JavaScript file to handle the data management -->
+					<script src="js/compare.js"></script>
+					<!-- JavaScript file to handle the selection lists -->
+					<script src="js/lists.js"></script>
+					<!-- JavaScript file to handle general stuff, including mobile select list management -->
+					<script src="js/global.js"></script>
+				</div>
+				
+				<!-- Watch out, weird shit ahead
+					The "style='margin-right: 15px;'" is for a custom margin so that the alert has the same margin to the jumbotron like the selection lists.
+					The "style='margin-left: 15px;'" is in the alert-div because it somehow did not work if it was both together in one div. 
+					One side always had a 30px margin or no margin at all. This fixed it. Don't ask, just pretend it's supposed to be like that ¯\_ツ_/¯
+				-->
+				<div class="row top-buffer" style="margin-right: 15px;">
+					<div id="alert" class="collapse alert col-lg-12 col-md-12 col-sm-12 col-xs-12" role="alert" style="margin-left: 15px;"> <!-- Collapsed by default -->
+						<strong>Warning: </strong><span id="alert-span">Please select at least two different countries</span>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Start of table section -->
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs12">
+					<div class="panel-group">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4><a href="#geo_table" data-toggle="collapse">Geography</a></h4> <!-- <h4 class="panel-title"></h4> looks ugly  -->
+							</div>	
+							
+							<div id="geo_table" class="panel-collapse collapse in"> <!-- collapse in = shows per default; collapse = collapsed by default -->
+								<div class="panel-body">
+									<table class="table table-bordered table-striped table-hover" id="geography">
+										<thead>
+											<tr>
+												<th class="text-center col-lg-5 col-md-5 col-sm-5 col-xs-5" colspan="2" id="country_header_1"></th>
+												<th class="text-center col-lg-2 col-md-2 col-sm-2 col-xs-2" colspan="1">Category</th>
+												<th class="text-center col-lg-5 col-md-5 col-sm-5 col-xs-5" colspan="2" id="country_header_2"></th>	
+											</tr>
+										</thead>
+										
+										<tbody>
+											<tr id="geo_region">
+												<td class="text-left col-lg-4 col-md-4 col-sm-4 col-xs-4" id="geo_region_1" colspan="2"></td>
+												<!--<td class="text-right col-lg-1 col-md-1 col-sm-1 col-xs-1" id="geo_region_1_stats"></td>-->
+												<td class="text-center col-lg-2 col-md-2 col-sm-2 col-xs-2"><strong>Region</strong></td>
+												<!--<td class="text-left col-lg-1 col-md-1 col-sm-1 col-xs-1" id="geo_region_2_stats"></td>-->
+												<td class="text-right col-lg-4 col-md-4 col-sm-4 col-xs-4" id="geo_region_2" colspan="2"></td>
+											</tr>
+											<tr id="geo_capital">
+												<td class="text-left" id="geo_capital_1" colspan="2"></td>
+												<!--<td class="text-right" id="geo_capital_1_stats"></td>-->
+												<td class="text-center"><strong>Capital</strong></td>
+												<!--<td class="text-left" id="geo_capital_2_stats"></td>-->
+												<td class="text-right" id="geo_capital_2" colspan="2"></td>
+											</tr>
+											<tr id="geo_surface_area">
+												<!-- declare col spans one time, the others will follow -->
+												<td class="text-left col-lg-4 col-md-4 col-sm-4 col-xs-4" id="geo_surface_area_1"></td>
+												<td class="text-right col-lg-1 col-md-1 col-sm-1 col-xs-1" id="geo_surface_area_1_stats"></td>
+												<td class="text-center col-lg-2 col-md-2 col-sm-2 col-xs-2"><strong>Surface Area</strong></td>
+												<td class="text-left col-lg-1 col-md-1 col-sm-1 col-xs-1" id="geo_surface_area_2_stats"></td>
+												<td class="text-right col-lg-4 col-md-4 col-sm-4 col-xs-4" id="geo_surface_area_2"></td>
+											</tr>
+											<tr id="geo_land_area">
+												<td class="text-left" id="geo_land_area_1"></td>
+												<td class="text-right" id="geo_land_area_1_stats"></td>
+												<td class="text-center"><strong>Land Area</strong></td>
+												<td class="text-left" id="geo_land_area_2_stats"></td>
+												<td class="text-right" id="geo_land_area_2"></td>
+											</tr>
+											<tr id="geo_water_area">
+												<td class="text-left" id="geo_water_area_1"></td>
+												<td class="text-right" id="geo_water_area_1_stats"></td>
+												<td class="text-center"><strong>Water Area</strong></td>
+												<td class="text-left" id="geo_water_area_2_stats"></td>
+												<td class="text-right" id="geo_water_area_2"></td>
+											</tr>
+											<tr id="geo_global_area_rank">
+												<td class="text-left" id="geo_global_area_rank_1"></td>
+												<td class="text-right" id="geo_global_area_rank_1_stats"></td>
+												<td class="text-center"><strong>Global Area Rank</strong></td>
+												<td class="text-left" id="geo_global_area_rank_2_stats"></td>
+												<td class="text-right" id="geo_global_area_rank_2"></td>
+											</tr>
+											<tr id="geo_land_boundary">
+												<td class="text-left" id="geo_land_boundary_1"></td>
+												<td class="text-right" id="geo_land_boundary_1_stats"></td>
+												<td class="text-center"><strong>Land Boundary</strong></td>
+												<td class="text-left" id="geo_land_boundary_2_stats"></td>
+												<td class="text-right" id="geo_land_boundary_2"></td>
+											</tr>
+											<tr id="geo_bordering_countries">
+												<td class="text-left" id="geo_bordering_countries_1" colspan="2"></td>
+												<!--<td class="text-right" id="geo_bordering_countries_1_stats"></td>-->
+												<td class="text-center"><strong>Bordering Countries</strong></td>
+												<!--<td class="text-left" id="geo_bordering_countries_2_stats"></td>-->
+												<td class="text-right" id="geo_bordering_countries_2" colspan="2"></td>
+											</tr>
+											<tr id="geo_coastline">
+												<td class="text-left" id="geo_coastline_1"></td>
+												<td class="text-right" id="geo_coastline_1_stats"></td>
+												<td class="text-center"><strong>Coastline</strong></td>
+												<td class="text-left" id="geo_coastline_2_stats"></td>
+												<td class="text-right" id="geo_coastline_2"></td>
+											</tr>
+											<tr id="geo_climate">
+												<td class="text-left" id="geo_climate_1" colspan="2"></td>
+												<!--<td class="text-right" id="geo_climate_2_stats"></td>-->
+												<td class="text-center"><strong>Climate</strong></td>
+												<!--<td class="text-left" id="geo_climate_2_stats"></td>-->
+												<td class="text-right" id="geo_climate_2" colspan="2"></td>
+											</tr>
+											<tr id="geo_terrain">
+												<td class="text-left" id="geo_terrain_1" colspan="2"></td>
+												<!--<td class="text-right" id="geo_terrain_1_stats"></td>-->
+												<td class="text-center"><strong>Terrain</strong></td>
+												<!--<td class="text-left" id="geo_terrain_2_stats"></td>-->
+												<td class="text-right" id="geo_terrain_2" colspan="2"></td>
+											</tr>
+											<tr id="geo_avg_elevation">
+												<td class="text-left" id="geo_avg_elevation_1"></td>
+												<td class="text-right" id="geo_avg_elevation_1_stats"></td>
+												<td class="text-center"><strong>Average Elevation</strong></td>
+												<td class="text-left" id="geo_avg_elevation_2_stats"></td>
+												<td class="text-right" id="geo_avg_elevation_2"></td>
+											</tr>
+											<tr id="geo_highest_elevation">
+												<td class="text-left" id="geo_highest_elevation_1"></td>
+												<td class="text-right" id="geo_highest_elevation_1_stats"></td>
+												<td class="text-center"><strong>Highest Elevation</strong></td>
+												<td class="text-left" id="geo_highest_elevation_2_stats"></td>
+												<td class="text-right" id="geo_highest_elevation_2"></td>
+											</tr>
+											<tr id="geo_lowest_elevation">
+												<td class="text-left" id="geo_lowest_elevation_1"></td>
+												<td class="text-right" id="geo_lowest_elevation_1_stats"></td>
+												<td class="text-center"><strong>Lowest Elevation</strong></td>
+												<td class="text-left" id="geo_lowest_elevation_2_stats"></td>
+												<td class="text-right" id="geo_lowest_elevation_2"></td>
+											</tr>
+											<tr id="geo_natural_resources">
+												<td class="text-left" id="geo_natural_resources_1" colspan="2"></td>
+												<!--<td class="text-right" id="geo_natural_resources_1_stats"></td>-->
+												<td class="text-center"><strong>Natural Resources</strong></td>
+												<!--<td class="text-left" id="geo_natural_resources_2_stats"></td>-->
+												<td class="text-right" id="geo_natural_resources_2" colspan="2"></td>
+											</tr>
+											<tr id="geo_land_use">
+												<td class="text-left" id="geo_land_use_1" colspan="2"></td>
+												<!--<td class="text-right" id="geo_land_use_1_stats"></td>-->
+												<td class="text-center"><strong>Land Use</strong></td>
+												<!--<td class="text-left" id="geo_land_use_2_stats"></td>-->
+												<td class="text-right" id="geo_land_use_2" colspan="2"></td>
+											</tr>
+											<tr id="geo_irrigated_land">
+												<td class="text-left" id="geo_irrigated_land_1"></td>
+												<td class="text-right" id="geo_irrigated_land_1_stats"></td>
+												<td class="text-center"><strong>Irrigated Land</strong></td>
+												<td class="text-left" id="geo_irrigated_land_2_stats"></td>
+												<td class="text-right" id="geo_irrigated_land_2"></td>
+											</tr>
+											<tr id="geo_natural_hazards">
+												<td class="text-left" id="geo_natural_hazards_1" colspan="2"></td>
+												<!--<td class="text-right" id="geo_natural_hazards_1_stats"></td>-->
+												<td class="text-center"><strong>Natural Hazards</strong></td>
+												<!--<td class="text-left" id="geo_natural_hazards_1_stats"></td>-->
+												<td class="text-right" id="geo_natural_hazards_2" colspan="2"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+							
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4><a href="#people_table" data-toggle="collapse">People and Society</a></h4> <!-- <h4 class="panel-title"></h4> looks ugly  -->
+							</div>	
+								
+							<div id="people_table" class="panel-collapse collapse">
+								<div class="panel-body">
+									<table class="table table-bordered table-striped table-hover" id="people">
+										<thead>
+											<tr>
+												<th class="text-center col-lg-5 col-md-5 col-sm-5 col-xs-5" colspan="2" id="country_header_3"></th>
+												<th class="text-center col-lg-2 col-md-2 col-sm-2 col-xs-2" colspan="1">Category</th>
+												<th class="text-center col-lg-5 col-md-5 col-sm-5 col-xs-5" colspan="2" id="country_header_4"></th>	
+											</tr>
+										</thead>
+										
+										<tbody>
+											<tr id="">
+												<td class="text-left col-lg-4 col-md-4 col-sm-4 col-xs-4" id=""></td>
+												<td class="text-right col-lg-1 col-md-1 col-sm-1 col-xs-1" id=""></td>
+												<td class="text-center col-lg-2 col-md-2 col-sm-2 col-xs-2"><strong>Category</strong></td>
+												<td class="text-left col-lg-1 col-md-1 col-sm-1 col-xs-1" id=""></td>
+												<td class="text-right col-lg-4 col-md-4 col-sm-4 col-xs-4" id=""></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="text-center">
+						<footer style="clear:both">
+							<p>
+								<a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="sitemap.html">Site Map</a> | <a href="impressum.html">Impressum</a>
+							</p>
+						</footer>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Include Bootstrap JavaScript -->
+		<script src="js/bootstrap.min.js"></script>
+		<!-- Include bootstrap-select -->
+		<link rel="stylesheet" href="css/bootstrap-select.css">
+		<script src="js/bootstrap-select.min.js"></script>
+	</body>
+</html>
